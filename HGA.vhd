@@ -44,8 +44,7 @@ Architecture beh of HGA is
 						next_state <= KOMZ;
 					Elsif	(MILi = '1') Then
 						next_state <= MILZ;
-					Elsif (STOP = '1') Then
-						next_state <= IGZ;
+					Else next_state <= IGZ;
 					End IF;
 					
 				When	KMMZ =>
@@ -53,16 +52,19 @@ Architecture beh of HGA is
 						next_state <= IGZ;
 					Elsif (STOP = '1' and Make50p = '1') THEN
 						next_state <= MILZ;
+					Else next_state <= KMMZ;
 					End IF;
 							
 				WHEN KOMZ =>
 					IF (STOP = '1') THEN
 						next_state <= IGZ;
+					Else next_state <= KOMZ;
 					END IF;
 					
 				WHEN MILZ =>
 					IF (STOP = '1') THEN
 						next_state <= IGZ;
+					Else next_state <= MILZ;
 					END IF;
 					
 			End Case;
