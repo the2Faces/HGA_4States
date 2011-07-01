@@ -3,8 +3,8 @@ Use ieee.std_logic_1164.all;
 
 Entity HGA is
 	Port (
-			KMM, KOM, MIL, ASTOP, ESTOP, Clk		:	IN std_logic;
-			POR, START, HLF, KAV, MIV				:	Out std_logic
+			POR, KMM, KOM, MIL, ASTOP, ESTOP, Clk		:	IN std_logic;
+			START, HLF, KAV, MIV								:	Out std_logic
 			);
 			
 End Entity;
@@ -12,7 +12,7 @@ End Entity;
 Architecture beh of HGA is
 
 	Type states is (IGZ, KMMZ, KOMZ, MILZ);
-	Signal current_state, next_state					:	states;
+	Signal current_state, next_state	:	states;
 	Signal STOP, KMMi, KOMi, MILi , Make50p , ButtonEN	:	STD_LOGIC;
 		
 	Begin
@@ -23,10 +23,10 @@ Architecture beh of HGA is
 	MILi <= MIL and ButtonEN;
 
 	
-		next_state_register	:	Process (STOP, Clk)
+		next_state_register	:	Process (POR, Clk)
 		
 		Begin
-			IF (STOP = '1') Then
+			IF (POR = '1') Then
 				current_state <= IGZ;
 				Elsif (Clk'Event and Clk = '1') Then
 					current_state <= next_state;
