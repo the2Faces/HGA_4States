@@ -1,4 +1,4 @@
--- dT-Zaehler
+-- deltaT-Zaehler
 
 ENTITY dt_Zaehler IS
 	
@@ -13,7 +13,7 @@ END dt_Zaehler;
 
 ARCHITECTURE beh OF dt_Zaehler IS
 
-	signal teiler : integer range 0 to 500000000;
+	signal teiler : integer range 0 to 500000000	;
 	signal schritte_pro_sekunde : integer range 0 to 2;
 	
 BEGIN
@@ -34,7 +34,7 @@ BEGIN
 			A_STOP <= '1';
 		elsif (CLK'event and CLK = '1') then
 			if (START = '1') then
-					if teiler = (500000000/schritte_pro_sekunde) then -- 10s oder 5s (bei CLK 50MHz)
+					if teiler = (50/schritte_pro_sekunde) then -- 10s oder 5s (bei CLK 50MHz)
 						A_STOP <= '0';
 					else
 						teiler <= teiler + 1;

@@ -48,7 +48,7 @@ Architecture beh of HGA is
 					End IF;
 					
 				When	KMMZ =>
-					IF (STOP = '1') THEN
+					IF (STOP = '1' and Make50p = '0') THEN
 						next_state <= IGZ;
 					Elsif (STOP = '1' and Make50p = '1') THEN
 						next_state <= MILZ;
@@ -79,17 +79,17 @@ Architecture beh of HGA is
 				Make50p 	<= '0';
 				START		<= '0';
 				KAV 		<= '0';
-				MIV			<= '0';
+				MIV		<= '0';
 				
 			WHEN KMMZ =>
-				ButtonEN	<= '0';
+				ButtonEN		<= '0';
 				Make50p		<= '1';
 				START 		<= '1';
 				KAV			<= '1';
 				MIV			<= '0';
 				
 			WHEN KOMZ =>
-				ButtonEN	<= '0';
+				ButtonEN		<= '0';
 				START 		<= '1';
 				KAV			<= '1';
 				MIV			<= '0';
@@ -97,7 +97,7 @@ Architecture beh of HGA is
 			WHEN MILZ =>
 				ButtonEN 	<= '0';
 				START 		<= '1';
-				KAV 		<= '0';
+				KAV 			<= '0';
 				MIV			<= '1';
 					
 		END CASE;
