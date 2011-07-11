@@ -3,8 +3,8 @@ Use ieee.std_logic_1164.all;
 
 Entity HGA is
 	Port (
-			POR, KMM, KOM, MIL, ASTOP, ESTOP, Clk		:	IN std_logic;
-			START, HLF, KAV, MIV								:	Out std_logic
+			POR, KMM, KOM, MIL, ASTOP, ESTOP, CLK		:	IN BIT;
+			START, HLF, KAV, MIV								:	Out BIT
 			);
 			
 End Entity;
@@ -13,56 +13,54 @@ Architecture beh of HGA is
 
 	Type states is (IGZ, KMMZ, KOMZ, MILZ);
 	Signal current_state, next_state	:	states;
-	Signal STOP, KMMi, KOMi, MILi , Make50p , ButtonEN	:	STD_LOGIC;
+	Signal KMMi, KOMi, MILi , Make50p , ButtonEN	:	BIT;
 		
 	Begin
 	
-	STOP <= ASTOP or ESTOP;
 	KMMi <= KMM and ButtonEN;
 	KOMi <= KOM and ButtonEN;
 	MILi <= MIL and ButtonEN;
 
 	
-		next_state_register	:	Process (POR, Clk)
+		next_state_register	:	Process (POR, CLK, ESTOP)
 		
 		Begin
-			IF (POR = '1') Then
+			IF (POR = '1') or (ESTOP = '1') Then
 				current_state <= IGZ;
-				Elsif (Clk'Event and Clk = '1') Then
+				Elsif (CLK'Event and CLK = '1') Then
 					current_state <= next_state;
 			End IF;
 		End Process;
 		
-		next_state_logic		:	Process (KMMi, KOMi, MILi, STOP, Make50p, current_state)
+		next_state_logic		:	Process (KMMi, KOMi, MILi, ESTOP, ASTOP, Make50p, current_state)
 		Begin
 			Case current_state is
 			
 				When IGZ =>
-					IF (KMMi = '1') Then
+					IF (KMMi = '1') Then		-- "Kaffee mit Milch" Taste gedrueckt
 						next_state <= KMMZ;
-					Elsif (KOMi = '1') Then
+					Elsif (KOMi = '1') Then	--	"Kaffee ohne Milch" Taste gedruekt
 						next_state <= KOMZ;
-					Elsif	(MILi = '1') Then
+					Elsif	(MILi = '1') Then	-- "Milch" Taste gedruekt
 						next_state <= MILZ;
 					Else next_state <= IGZ;
 					End IF;
 					
-				When	KMMZ =>
-					IF (STOP = '1' and Make50p = '0') THEN
-						next_state <= IGZ;
-					Elsif (STOP = '1' and Make50p = '1') THEN
+				When	KMMZ =>					-- "Kaffee mit Milch" Zustand
+					If (ASTOP = '0') THEN
 						next_state <= MILZ;
-					Else next_state <= KMMZ;
+					Else
+						next_state <= KMMZ;
 					End IF;
 							
 				WHEN KOMZ =>
-					IF (STOP = '1') THEN
+					IF (ASTOP = '0') THEN
 						next_state <= IGZ;
 					Else next_state <= KOMZ;
 					END IF;
 					
 				WHEN MILZ =>
-					IF (STOP = '1') THEN
+					IF (ASTOP = '0') THEN
 						next_state <= IGZ;
 					Else next_state <= MILZ;
 					END IF;
@@ -72,6 +70,11 @@ Architecture beh of HGA is
 	
 	output_logic	:	Process (current_state)
 	Begin
+	
+	ButtonEN <= '0';
+	KAV	<=	'0';
+	MIV	<= '0';
+	
 		Case current_state is
 			
 			WHEN IGZ =>
@@ -90,10 +93,11 @@ Architecture beh of HGA is
 				
 			WHEN KOMZ =>
 				ButtonEN		<= '0';
+				Make50p		<= '0';
 				START 		<= '1';
 				KAV			<= '1';
 				MIV			<= '0';
-				
+								
 			WHEN MILZ =>
 				ButtonEN 	<= '0';
 				START 		<= '1';
