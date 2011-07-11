@@ -30,11 +30,6 @@ set_global_assignment -name DEVICE EP3C16F484C8
 
 
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
-set_global_assignment -name VHDL_FILE ../count1/entpreller2.vhd
-set_global_assignment -name BDF_FILE Top.bdf
-set_global_assignment -name VHDL_FILE LTVC.vhd
-set_global_assignment -name VHDL_FILE HGA.vhd
-set_global_assignment -name VHDL_FILE dt_Zaehler.vhd
 set_global_assignment -name LAST_QUARTUS_VERSION 10.1
 set_global_assignment -name MISC_FILE "D:/Studium/Elektronik-E/ST2/Projekte/HGA_4States/HGA.dpf"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
@@ -47,7 +42,6 @@ set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME Top_TB -section_id Top_TB
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name EDA_TEST_BENCH_FILE Top_TB.vhd -section_id Top_TB
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
@@ -60,4 +54,13 @@ set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_global_assignment -name VHDL_FILE entpreller2.vhd
+set_global_assignment -name BDF_FILE Top.bdf
+set_global_assignment -name VHDL_FILE LTVC.vhd
+set_global_assignment -name VHDL_FILE HGA.vhd
+set_global_assignment -name VHDL_FILE dt_Zaehler.vhd
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name EDA_TEST_BENCH_FILE Top_TB.vhd -section_id Top_TB
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -7,9 +7,8 @@ End Entity Top_TB;
 
 Architecture stimulus of Top_TB is
 
-Signal nClk, nPOR, nMON, nKON	:	STD_LOGIC:= '0';
-Signal nESTOP												:	STD_LOGIC:= '0';
-Signal nKMM, nKOM, nMIL			: STD_Logic:= '1';
+Signal nClk, nPOR, nMON, nKON, nESTOP				:	STD_LOGIC:= '0';
+Signal nKMM, nKOM, nMIL									: 	STD_Logic:= '1';
 
 Constant period:		Time :=20ns;
 
