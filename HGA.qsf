@@ -1,4 +1,5 @@
-set_global_assignment -name TOP_LEVEL_ENTITY Top
+# -------------------------------------------------------------------------- #
+#
 # Copyright (C) 1991-2010 Altera Corporation
 # Your use of Altera Corporation's design tools, logic functions 
 # and other software and tools, and its AMPP partner logic 
@@ -12,75 +13,64 @@ set_global_assignment -name TOP_LEVEL_ENTITY Top
 # programming logic devices manufactured by Altera and sold by 
 # Altera or its authorized distributors.  Please refer to the 
 # applicable agreement for further details.
-
-# Altera recommends that you do not modify this file. This
-# file is updated automatically by the Quartus II software
-# and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 10.1 Build 153 11/29/2010 SJ Web Edition
+# Date created = 17:45:40  July 11, 2011
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		HGA_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
 
 
 set_global_assignment -name FAMILY "Cyclone III"
 set_global_assignment -name DEVICE EP3C16F484C8
-
-# Pin & Location Assignments
-# ==========================
-
-
-
-
-
-
-set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
-<<<<<<< HEAD
-=======
-set_global_assignment -name BDF_FILE Top.bdf
-set_global_assignment -name VHDL_FILE LTVC.vhd
-set_global_assignment -name VHDL_FILE HGA.vhd
-set_global_assignment -name VHDL_FILE dt_Zaehler.vhd
->>>>>>> youRFate/master
+set_global_assignment -name TOP_LEVEL_ENTITY Top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 10.1
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:45:40  JULY 11, 2011"
 set_global_assignment -name LAST_QUARTUS_VERSION 10.1
-set_global_assignment -name MISC_FILE "D:/Studium/Elektronik-E/ST2/Projekte/HGA_4States/HGA.dpf"
-set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH Top_TB -section_id eda_simulation
-set_global_assignment -name EDA_TEST_BENCH_NAME Top_TB -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME DUT -section_id Top_TB
-set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "1 ms" -section_id Top_TB
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME Top_TB -section_id Top_TB
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT 484
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 8
-<<<<<<< HEAD
-=======
-set_global_assignment -name VHDL_FILE entpreller2.vhd
-set_global_assignment -name EDA_RUN_TOOL_AUTOMATICALLY ON -section_id eda_simulation
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name EDA_TEST_BENCH_FILE Top_TB.vhd -section_id Top_TB
->>>>>>> youRFate/master
 set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
 set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
 set_global_assignment -name RESERVE_ALL_UNUSED_PINS_WEAK_PULLUP "AS INPUT TRI-STATED"
 set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
-<<<<<<< HEAD
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
-set_global_assignment -name VHDL_FILE entpreller2.vhd
 set_global_assignment -name BDF_FILE Top.bdf
 set_global_assignment -name VHDL_FILE LTVC.vhd
 set_global_assignment -name VHDL_FILE HGA.vhd
+set_global_assignment -name VHDL_FILE entpreller2.vhd
 set_global_assignment -name VHDL_FILE dt_Zaehler.vhd
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name EDA_TEST_BENCH_FILE Top_TB.vhd -section_id Top_TB
-set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-=======
-set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
->>>>>>> youRFate/master
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH Top_TB -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME Top_TB -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id Top_TB
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "1 ms" -section_id Top_TB
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME Top_TB -section_id Top_TB
+set_global_assignment -name EDA_TEST_BENCH_FILE Top_TB.vhd -section_id Top_TB
